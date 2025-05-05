@@ -9,3 +9,5 @@ console.log(`O valor da subtração é: ${SubtracaoFunc(2,1)}`);
 
 let multiplaFunc = require("./multiplicacao");
 console.log(`O valor da multiplicação é: ${multiplaFunc(5,2)}`);
+
+console.log("Teste");
