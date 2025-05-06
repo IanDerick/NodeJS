@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 
 app.listen(3000, () => {
     console.log("Servidor rodando!");
@@ -20,4 +21,20 @@ let games = [
 
 app.get('/', (req, res) => {
     res.json(games);
-})
+});
+
+app.post('/novogame', (req, res) => {
+    let title = req.body.title;
+    let studio = req.body.studio;
+    let price = req.body.price;
+
+    console.log(title);
+    console.log(studio);
+    console.log(price);
+
+    let newGame = {title, studio, price};
+
+    games.push(newGame);
+
+    res.send("OK");
+});
