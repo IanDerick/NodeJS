@@ -24,3 +24,5 @@ process.stdout.write(
         ["Jan", "Kowalski", 30],
     ])
 );
+
+console.log("Teste");
