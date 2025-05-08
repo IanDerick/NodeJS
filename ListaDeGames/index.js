@@ -2,11 +2,11 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log("Servidor rodando!");
-});
+const buscarGamesPorNome = (nomeGames) => {
+    return games.filter(titulo => titulo.title.toLowerCase().includes(nomeGames.toLowerCase()));
+}
 
-let games = [
+const games = [
     {title: "Sea Of Thieves", studio: "Rare",  price: 30},
     {title: "WOW", studio: "Blizzard", price: 120},
     {title: "Valorant", studio: "Riot", price: 0},
@@ -19,8 +19,14 @@ let games = [
     {title: "Forza Horizon 5", studio: "Microsoft", price: 120},
 ];
 
-app.get('/', (req, res) => {
-    res.json(games);
+app.get('/games', (req, res) => {
+    const nomeGames = req.query.busca;
+    const resultado = nomeGames ? buscarGamesPorNome(nomeGames) : games;
+    if (resultado.length) {
+        res.json(resultado);
+    } else {
+        res.status(404).send({ "erro": "Nenhum jogo encontrado"});
+    }
 });
 
 app.post('/novogame', (req, res) => {
@@ -54,4 +60,9 @@ app.delete('/:index', (req, res) => {
     const {index} = req.params;
     games.splice(index, 1);
     return res.json({ message: "O jogo foi deletado"});
+});
+
+
+app.listen(3000, () => {
+    console.log("Servidor rodando!");
 });
