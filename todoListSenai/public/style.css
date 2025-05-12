@@ -5,8 +5,9 @@
     box-sizing: border-box;
 }
 
-body{
-    background-image: linear-gradient(rgb(7, 11, 91), rgb(102, 207, 100));
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(rgb(7, 11, 91), rgb(102, 207, 100)); /* azul escuro para verde */
 }
 
 .tarefas{
