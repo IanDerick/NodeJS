@@ -9,6 +9,6 @@ export const buscarUfsPorNome = (nomeUf) => {
 }
 
 export const buscarUfProId = (id) => {
-    const idUF = parentInt(id);
+    const idUF = parseInt(id);
     return colecaoUf.find(uf => uf.id === idUF);
 }

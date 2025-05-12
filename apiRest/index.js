@@ -1,5 +1,6 @@
 import express from 'express';
 import { buscarUfs, buscarUfProId, buscarUfsPorNome } from './servicos/servicos.js';
+
 const app = express();
 
 app.get('/ufs', (req, res) => {
