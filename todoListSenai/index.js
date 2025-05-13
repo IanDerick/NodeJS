@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }));
 
-let tasks = ['Passear com o dog', 'Ir ao mercado', 'Comprar pão'];
+let tasks = [];
 
 app.get('/', (req, res) => {
     res.render('index', {tasksList: tasks});
