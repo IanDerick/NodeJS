@@ -1,0 +1,15 @@
+1.No Node.js, o pacote mysql2 permite conexão com o MySQL usando callbacks. Já o mysql2/promise fornece suporte nativo a Promises, permitindo utilizar async/await nas consultas ao banco.
+2.Em aplicações Node.js, as variáveis de ambiente armazenam host, usuário, senha e banco de dados fora do código-fonte.
+3.É uma consulta SQL parametrizada executada pelo mysql2 através de placeholders (?).
+4. O pool mantém várias conexões abertas com o MySQL e as reutiliza conforme necessário.
+5. O dotenv carrega as configurações do arquivo .env para process.env.
+6. const mysql = require('mysql2/promise');
+	const [rows] = await connection.execute(
+    	'SELECT * FROM usuarios'
+);
+7.Utilizar variáveis de ambiente;
+Utilizar prepared statements;
+Implementar pool de conexões.
+8. Transações permitem agrupar várias operações SQL para que sejam executadas como uma única unidade lógica.
+9. Podem ocorrer erros de autenticação, banco inexistente, conexão recusada ou servidor indisponível.
+10. Permite separar a conexão MySQL, consultas SQL e regras de negócio em arquivos diferentes.
