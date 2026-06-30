@@ -1,0 +1,22 @@
+{
+  "name": "modulo7-aplicacoes-avancadas",
+  "version": "1.0.0",
+  "description": "Modulo 07 - Aplicacoes Avancadas (async/await, worker_threads, socket.io, cluster, child_process, winston)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "cluster": "node src/cluster.js",
+    "worker-demo": "node src/worker-demo.js",
+    "child-process-demo": "node src/child-process-demo.js",
+    "async-demo": "node src/async-demo.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "winston": "^3.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

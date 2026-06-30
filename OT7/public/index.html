@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Chat em Tempo Real - Socket.io</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+        #mensagens { border: 1px solid #ccc; border-radius: 6px; height: 300px; overflow-y: auto; padding: 12px; margin-bottom: 12px; }
+        #mensagens p { margin: 4px 0; }
+        form { display: flex; gap: 8px; }
+        input[type="text"] { flex: 1; padding: 8px; }
+        button { padding: 8px 16px; }
+        #status { margin-top: 16px; font-size: 14px; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Chat em Tempo Real</h1>
+    <div id="mensagens"></div>
+    <form id="form-chat">
+        <input type="text" id="input-mensagem" placeholder="Digite sua mensagem" autocomplete="off" required />
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="status">
+        <button id="btn-tarefa">Disparar tarefa pesada (Worker Thread)</button>
+        <p id="resultado-tarefa"></p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const mensagensEl = document.getElementById('mensagens');
+        const form = document.getElementById('form-chat');
+        const input = document.getElementById('input-mensagem');
+        const btnTarefa = document.getElementById('btn-tarefa');
+        const resultadoTarefa = document.getElementById('resultado-tarefa');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value.trim()) {
+                socket.emit('mensagem', input.value.trim());
+                input.value = '';
+            }
+        });
+
+        socket.on('mensagem', (dados) => {
+            const p = document.createElement('p');
+            p.textContent = `${dados.id.slice(0, 5)}: ${dados.texto}`;
+            mensagensEl.appendChild(p);
+            mensagensEl.scrollTop = mensagensEl.scrollHeight;
+        });
+
+        btnTarefa.addEventListener('click', () => {
+            resultadoTarefa.textContent = 'Processando no worker thread...';
+            socket.emit('tarefa-pesada', 200000);
+        });
+
+        socket.on('tarefa-concluida', (resultado) => {
+            resultadoTarefa.textContent = `Concluído! Total de primos: ${resultado.total}`;
+        });
+
+        socket.on('tarefa-erro', (erro) => {
+            resultadoTarefa.textContent = `Erro: ${erro}`;
+        });
+    </script>
+</body>
+</html>
