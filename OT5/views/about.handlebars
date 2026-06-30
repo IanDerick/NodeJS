@@ -1,0 +1,21 @@
+<div class="card">
+    <h1>Sobre a {{empresa.nome}}</h1>
+    <p>{{empresa.descricao}}</p>
+    <p><strong>Fundada em:</strong> {{empresa.fundacao}}</p>
+    <p><strong>Missão:</strong> {{empresa.missao}}</p>
+
+    <h2>Nossa Equipe</h2>
+    <table>
+        <thead>
+            <tr><th>Nome</th><th>Cargo</th></tr>
+        </thead>
+        <tbody>
+            {{#each empresa.equipe}}
+            <tr>
+                <td>{{this.nome}}</td>
+                <td>{{this.cargo}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

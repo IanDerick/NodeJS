@@ -1,0 +1,17 @@
+<div class="card">
+    <h1>Posts (via JSONPlaceholder API)</h1>
+    <p>Dados obtidos de uma API externa e renderizados no servidor (SSR).</p>
+
+    {{#if error}}
+        <div class="error"><strong>Erro:</strong> {{error}}</div>
+    {{/if}}
+
+    {{#each posts}}
+    <div class="post">
+        <h3>#{{this.id}} - {{this.title}}</h3>
+        <p>{{this.body}}</p>
+    </div>
+    {{else}}
+        <p>Nenhum post encontrado.</p>
+    {{/each}}
+</div>

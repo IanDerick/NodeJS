@@ -1,0 +1,27 @@
+<div class="card">
+    <h1>Lista de Usuários</h1>
+
+    {{#if error}}
+        <div class="error"><strong>Erro:</strong> {{error}}</div>
+    {{/if}}
+
+    <p><a href="/usuarios/novo">+ Cadastrar novo usuário</a></p>
+
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Nome</th><th>Email</th><th>Criado em</th></tr>
+        </thead>
+        <tbody>
+            {{#each usuarios}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nome}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.created_at}}</td>
+            </tr>
+            {{else}}
+            <tr><td colspan="4">Nenhum usuário cadastrado.</td></tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
