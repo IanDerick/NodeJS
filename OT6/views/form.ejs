@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Formulário Protegido (CSRF)</title>
+</head>
+<body>
+    <h1>Formulário Protegido</h1>
+    <form action="/form" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <p>
+            <label>Mensagem</label><br/>
+            <input type="text" name="mensagem" required />
+        </p>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Site Malicioso (Simulação CSRF)</title>
+</head>
+<body>
+    <h1>Página maliciosa simulando um ataque CSRF</h1>
+    <p>Este formulário tenta enviar uma requisição para /form sem o token CSRF válido.</p>
+    <form action="http://localhost:3000/form" method="POST">
+        <input type="hidden" name="mensagem" value="ataque automatizado" />
+        <button type="submit">Disparar requisição maliciosa</button>
+    </form>
+</body>
+</html>
